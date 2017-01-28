@@ -12,15 +12,20 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
    
+    @IBOutlet weak var pause: UIButton!
     
     @IBOutlet weak var distanceLabel: UILabel!
     var locationManagerr = CLLocationManager()
-    var locations = [CLLocationManager]()
-    var distance = 0.0
+    var locationsCaptureds = [CLLocation]()
+    
+    var currentLocation:CLLocation!
+    var lastLocation: CLLocation!
+    var traveledDistance:Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManagerr.requestAlwaysAuthorization()
+        
       
         // Do any additional setup after loading the view, typically from a nib.
        
@@ -28,8 +33,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func stopUpdateLocation(_ sender: Any) {
         
         locationManagerr.stopUpdatingLocation()
-        distanceLabel.text = String(distance)
+        view.backgroundColor = UIColor.white
+
     }
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func startTrack(_ sender: Any) {
         startLocationUpdates()
+        
     }
     
     func startLocationUpdates(){
@@ -55,23 +63,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        
-        var locationsT = locations
-        
-        for location in locationsT{
-            if location.horizontalAccuracy < 20 {
-                if locations.count > 0 {
-                    self.distance += location.distance(from: locationsT.last!)
-                }
-                locationsT.append(location)
+        UIView.animate(withDuration: 1
+            , animations: { 
+                self.view.backgroundColor = UIColor.green.withAlphaComponent(0.6)
+        }) { (finished) in
+            UIView.animate(withDuration: 1) {
+                self.view.backgroundColor = UIColor.green.withAlphaComponent(0.8)
             }
-            
         }
-       // print(locationsT)
         
-        print(distance)
-        distanceLabel.text = String(distance)
+        if currentLocation == nil {
+            currentLocation = locations.first
+        } else {
+            if let lastLocation = locations.last {
+                let distance = currentLocation.distance(from: self.lastLocation)
+                let lastDistance = lastLocation.distance(from: self.lastLocation)
+                traveledDistance += lastDistance
+                print( "\(currentLocation)")
+                print( "\(lastLocation)")
+                print("FULL DISTANCE: \(traveledDistance)")
+                print("STRAIGHT DISTANCE: \(distance)")
+            }
+        }
+        lastLocation = locations.last
+        distanceLabel.text = String(traveledDistance/1000)
+        
+        
     }
+    
     
     
     
