@@ -47,21 +47,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV8-Q3-yuE">
+                                <rect key="frame" x="135.5" y="58" width="104.5" height="47"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="39"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xIg-oV-RwD" secondAttribute="trailing" constant="16" id="4zg-7K-eJJ"/>
                             <constraint firstItem="xIg-oV-RwD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D6W-GM-qH6"/>
                             <constraint firstItem="xIg-oV-RwD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="Nqs-jL-O7t"/>
+                            <constraint firstItem="aV8-Q3-yuE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OvU-3k-eoD"/>
                             <constraint firstItem="nhp-t7-Rjd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SbD-IW-2jf"/>
                             <constraint firstItem="nhp-t7-Rjd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="161" id="rEy-IR-Y9i"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xIg-oV-RwD" secondAttribute="bottom" constant="21" id="sXI-HP-hOb"/>
+                            <constraint firstItem="aV8-Q3-yuE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="38" id="t5W-bP-lOS"/>
                             <constraint firstItem="6z3-sy-Pk9" firstAttribute="top" secondItem="nhp-t7-Rjd" secondAttribute="bottom" constant="134" id="uvm-A3-NMq"/>
                             <constraint firstItem="6z3-sy-Pk9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vIW-si-KKl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="distanceLabel" destination="xIg-oV-RwD" id="bXM-sa-4tX"/>
+                        <outlet property="speedLabel" destination="aV8-Q3-yuE" id="DRp-51-1eM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

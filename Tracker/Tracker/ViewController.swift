@@ -12,7 +12,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
    
-    @IBOutlet weak var pause: UIButton!
+    @IBOutlet weak var speedLabel: UILabel!
     
     @IBOutlet weak var distanceLabel: UILabel!
     var locationManagerr = CLLocationManager()
@@ -87,6 +87,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         lastLocation = locations.last
         distanceLabel.text = String(traveledDistance/1000)
+        speedLabel.text = "\((self.lastLocation.speed/1000)*3600) Km/H"
         
         
     }
